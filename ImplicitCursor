@@ -1,0 +1,9 @@
+begin
+update employee set salary = salary + 100
+where dept_code=‘TRNG’;
+dbms_output.put_line(SQL%ROWCOUNT || ‘rows updated');
+if SQL%NOTFOUND
+then
+dbms_output.put_line (‘Unable to update department TRNG');
+end if;
+end;
