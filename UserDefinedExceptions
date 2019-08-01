@@ -1,0 +1,12 @@
+declare
+name varchar2(30);
+begin
+SELECT first_name into name FROM employees WHERE employee_id = &emp_code;
+dbms_output.put_line(name);
+exception
+when no_data_found then
+dbms_output.put_line ('Such employee does not exists');
+when others then
+dbms_output.put_line (SQLERRM || ' '||SQLCODE);
+dbms_output.put_line ('Some other error');
+end;
