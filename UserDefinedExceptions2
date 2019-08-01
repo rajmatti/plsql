@@ -12,3 +12,7 @@ else
 update employees set salary = current_sal+1000
 WHERE employee_id = emp_id;
 end if;
+exception
+when sal_null then
+dbms_output.put_line('Salary is missing');
+end;
