@@ -1,0 +1,11 @@
+declare
+CURSOR employee_cur(dept_desc varchar2)
+IS
+SELECT first_name,salary,department_id FROM employees
+WHERE department_id= dept_desc;
+emp_rec employee_cur%rowtype;
+begin
+open employee_cur(&dept_desc);
+fetch employee_cur into emp_rec;
+DBMS_OUTPUT.PUT_LINE(emp_rec.first_name|| ' ' ||emp_rec.salary|| ' ' ||emp_rec.department_id);
+end;
