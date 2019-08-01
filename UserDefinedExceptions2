@@ -1,0 +1,14 @@
+declare
+current_sal number;
+emp_id number;
+sal_null exception;
+begin
+emp_id:=&empno;
+SELECT salary into current_sal FROM employees
+WHERE employee_id=emp_id;
+if current_sal is null then
+raise sal_null;
+else
+update employee set salary = current_sal+1000
+WHERE emp_code = emp_id;
+end if;
